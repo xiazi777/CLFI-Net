@@ -15,6 +15,8 @@ Stanford Cars (CAR) - <https://ai.stanford.edu/~jkrause/cars/car_dataset.html>
 
 FGVC-Aircraft (AIR) - <https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/>
 
+ALGAE - The algae dataset is still being collected and may be publicly available in the future
+
 # CLFI-Net Training and evaluation
 A one train example is provided.<br>
 Train the CLFI-Net model: python train.py
