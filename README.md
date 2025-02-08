@@ -8,7 +8,11 @@ Other dependencies (e.g., torchvision), see requirements.txt.<br>
 For pip users, please type the command 
 ## pip install -r requirements.txt.
 Download the backbone pre-training file and save it to the appropriate location, the download link is as follows：
-
+'resnet18': <https://download.pytorch.org/models/resnet18-5c106cde.pth>,<br>
+'resnet34': <https://download.pytorch.org/models/resnet34-333f7ec4.pth>,<br>
+'resnet50': <https://download.pytorch.org/models/resnet50-19c8e357.pth>,<br>
+'resnet101': <https://download.pytorch.org/models/resnet101-5d3b4d8f.pth>,<br>
+'resnet152': <https://download.pytorch.org/models/resnet152-b121ed2d.pth>,
 
 ## Datasets
 Here are the download links for each dataset, and the division of the datasets is detailed in the article.<br>
