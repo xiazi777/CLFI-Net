@@ -2,20 +2,17 @@ from __future__ import print_function
 from distutils.log import error
 import os
 from numpy import result_type
-# from pickletools import optimize
 import torch
 import argparse
 import torch.optim as optim
 import torch.nn.functional as F
-
 from dataset import *
 from utils import *
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1, 2, 3'  # 环境变量，用于控制程序运行时可见的 GPU
-
+os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1, 2, 3' 
 
 def main():
-    parser = argparse.ArgumentParser('FGVC', add_help=False)
+    parser = argparse.ArgumentParser('CLFI-Net', add_help=False)
     parser.add_argument('--batch_size', type=int, default=8, help="batch size for training")
     parser.add_argument('--dataset_name', type=str, default="air", help="dataset name")
     parser.add_argument('--topn', type=int, default=4, help="parts number")
@@ -27,8 +24,8 @@ def main():
     ## Data
     data_config = {"air": [100, "../dataset/fgvc-aircraft-2013b"],
                    "car": [196, "../dataset/stanford_cars"],
-                   "dog": [120, "../Data/StanfordDogs"],
                    "cub": [200, "../dataset/CUB_200_2011_official/CUB_200_2011"],
+                   "algae": [32, "../dataset/CUB_200_2011_official/CUB_200_2011"],
                    }
     dataset_name = args.dataset_name
     classes_num, data_root = data_config[dataset_name]
