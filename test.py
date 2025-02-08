@@ -25,7 +25,7 @@ def main():
     data_config = {"air": [100, "../dataset/fgvc-aircraft-2013b"],
                    "car": [196, "../dataset/stanford_cars"],
                    "cub": [200, "../dataset/CUB_200_2011_official/CUB_200_2011"],
-                   "algae": [32, "../dataset/CUB_200_2011_official/CUB_200_2011"],
+                   "algae": [32, "../dataset/ALGAE"],
                    }
     dataset_name = args.dataset_name
     classes_num, data_root = data_config[dataset_name]
@@ -35,9 +35,9 @@ def main():
     elif dataset_name == 'car':
         trainset = CAR(root=data_root, is_train=True, data_len=None)
         testset = CAR(root=data_root, is_train=False, data_len=None)
-    elif dataset_name == 'dog':
-        trainset = DOG(root=data_root, is_train=True, data_len=None)
-        testset = DOG(root=data_root, is_train=False, data_len=None)
+    elif dataset_name == 'algae':
+        trainset = ALGAE(root=data_root, is_train=True, data_len=None)
+        testset = ALGAE(root=data_root, is_train=False, data_len=None)
     elif dataset_name == 'cub':
         trainset = CUB(root=data_root, is_train=True, data_len=None)
         testset = CUB(root=data_root, is_train=False, data_len=None)
