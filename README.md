@@ -3,8 +3,8 @@ Authors: Xueqing Zhang, Shuo Wang, Fengjuan Feng, Jianlei Liu
 
 # Dependencies and requirements
 Python 3.9 <br>
-Install PyTorch 1.8 or above and other dependencies (e.g., torchvision).<br>
-For packages, see requirements.txt.<br>
+Install PyTorch 1.8 or above.<br>
+Other dependencies (e.g., torchvision), see requirements.txt.<br>
 For pip users, please type the command 
 ## pip install -r requirements.txt.
 
