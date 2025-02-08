@@ -7,6 +7,8 @@ Install PyTorch 1.8 or above.<br>
 Other dependencies (e.g., torchvision), see requirements.txt.<br>
 For pip users, please type the command 
 ## pip install -r requirements.txt.
+Download the backbone pre-training file and save it to the appropriate location, the download link is as follows：
+
 
 ## Datasets
 Here are the download links for each dataset, and the division of the datasets is detailed in the article.<br>
@@ -27,9 +29,9 @@ Note:Please modify the code accordingly to the storage location.
 # Reference
 if this code is helpful to you, please cite as the following format:<br>
 @ARTICLE{1,<br>
-  &emsp author={Zhang, Xueqing and Wang, Shuo and Feng, Fengjuan and Liu, Jianlei},<br>
-  &emsp journal={The Visual Computer}, <br>
-  &emsp title={Enhancing Fine-Grained Visual Classification via Curriculum Learning and Global-Local Feature Interaction}<br>
+      author={Zhang, Xueqing and Wang, Shuo and Feng, Fengjuan and Liu, Jianlei},<br>
+      journal={The Visual Computer}, <br>
+      title={Enhancing Fine-Grained Visual Classification via Curriculum Learning and Global-Local Feature Interaction}<br>
 }
 
 
