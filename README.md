@@ -7,7 +7,7 @@ Install PyTorch 1.8 or above.<br>
 Other dependencies (e.g., torchvision), see requirements.txt.<br>
 For pip users, please type the command 
 ## pip install -r requirements.txt.
-Download the backbone pre-training file and save it to the appropriate location, the download link is as follows：
+Download the backbone pre-training file and save it to the appropriate location, the download link is as follows：<br>
 'resnet18': <https://download.pytorch.org/models/resnet18-5c106cde.pth>,<br>
 'resnet34': <https://download.pytorch.org/models/resnet34-333f7ec4.pth>,<br>
 'resnet50': <https://download.pytorch.org/models/resnet50-19c8e357.pth>,<br>
