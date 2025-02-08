@@ -27,9 +27,9 @@ Note:Please modify the code accordingly to the storage location.
 # Reference
 if this code is helpful to you, please cite as the following format:<br>
 @ARTICLE{1,<br>
-  author={Zhang, Xueqing and Wang, Shuo and Feng, Fengjuan and Liu, Jianlei},<br>
-  journal={The Visual Computer}, <br>
-  title={Enhancing Fine-Grained Visual Classification via Curriculum Learning and Global-Local Feature Interaction}<br>
+  &emsp author={Zhang, Xueqing and Wang, Shuo and Feng, Fengjuan and Liu, Jianlei},<br>
+  &emsp journal={The Visual Computer}, <br>
+  &emsp title={Enhancing Fine-Grained Visual Classification via Curriculum Learning and Global-Local Feature Interaction}<br>
 }
 
 
