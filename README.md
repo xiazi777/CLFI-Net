@@ -8,10 +8,9 @@ For packages, see requirements.txt.
 Install PyTorch 1.8 or above and other dependencies (e.g., torchvision).<br>
 For pip users, please type the command pip instal(requirements.txt).
 ## Datasets
+CUB_200_2011 (CUB) - <https://www.vision.caltech.edu/datasets/cub_200_2011/>
 
-CUB_200_2011 (CUB) - <http://www.vision.caltech.edu/visipedia/CUB-200-2011.html>
-
-Stanford Cars (CAR) - <https://ai.stanford.edu/~jkrause/cars/car_dataset.html>
+Stanford Cars (CAR) - <http://ai.stanford.edu/~jkrause/cars/car_dataset.html>.note:This is the official download link, but it is possible that the link is not working. If it does not work, please visit: https://pan.baidu.com/s/1zfCC6jeZpmrsH4cXaZLquQ?pwd=6666. Please note that this is not the only way to get it.
 
 FGVC-Aircraft (AIR) - <https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/>
 
