@@ -25,7 +25,7 @@ The implementation of our approach is very simple, just run train.py to complete
 Note:Please modify the code accordingly to the storage location.
 
 # Reference
-if this code is helpful to you, please cite as the following format:
+if this code is helpful to you, please cite as the following format:<br>
 @ARTICLE{1,<br>
   author={Zhang, Xueqing and Wang, Shuo and Feng, Fengjuan and Liu, Jianlei},<br>
   journal={The Visual Computer}, <br>
