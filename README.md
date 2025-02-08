@@ -15,12 +15,12 @@ FGVC-Aircraft (AIR) - <https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/>
 ALGAE - The algae dataset is still being collected and may be publicly available in the future
 
 # Descriptions of key algorithms
+Resnet.py serves as the backbone and is responsible for feature extraction; anchors.py is mainly used for setting and generating anchor frames; dataset.py is responsible for loading datasets and pre-processing; model.py is the core code that defines the structure of the whole model and the forward propagation logic; train.py is responsible for training the model including data loading, loss calculation and optimization update; test.py is used for testing the model performance and evaluating its generalization ability; utils.py provides various auxiliary tool functions to enhance the modularization and optimization of code; and tools.py provides various auxiliary tool functions to enhance the modularization and optimization of code. data loading, loss calculation and optimization update; test.py is used to test the model performance; utils.py provides a variety of auxiliary tool functions.
 
-
-# CLFI-Net Training and evaluation
-The training code for CLFI-Net is train.py and the test code is test.py<br>
-Train the CLFI-Net model: python train.py<br>
-Test the CLFI-Net model: python test.py<br>
+# Implementations of CLFI-Net
+The training code for CLFI-Net is train.py and the test code is test.py.<br>
+The implementation of our approach is very simple, just run train.py to complete the end-to-end training without any additional tedious process. During the training process, the system will automatically generate a directory, e.g., cub_resnet50_4, which contains the model parameters saved during the training process, model.pth, as well as information about the training and testing process, such as results_train and results_test, for subsequent analysis and tuning.<br>
+## Train the CLFI-Net model: python train.py<br>
 Note:Please modify the code accordingly to the storage location.
 
 # Reference
