@@ -209,15 +209,15 @@ class BasicConv(nn.Module):
 class CA(nn.Module):
     def __init__(self, in_planes, out_planes, reduction=16):
         super(CA, self).__init__()
-        self.conv1 = nn.Conv2d(in_planes, in_planes, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
+        self.conv1 = nn.Conv2d(in_planes, in_planes//2, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
                                bias=False)
-        self.conv2 = nn.Conv2d(in_planes, in_planes, kernel_size=3, stride=1, padding=1, dilation=1, groups=1,
+        self.conv2 = nn.Conv2d(in_planes, in_planes//2, kernel_size=3, stride=1, padding=1, dilation=1, groups=1,
                                bias=False)
         '''
         self.conv3 = nn.Conv2d(in_planes, in_planes, kernel_size=5, stride=1, padding=2, dilation=1, groups=1,
                                bias=False)
         '''
-        self.conv_cat = nn.Conv2d(in_planes * 2, in_planes, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
+        self.conv_cat = nn.Conv2d(in_planes , in_planes, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
                                   bias=False)
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Sequential(
@@ -233,8 +233,9 @@ class CA(nn.Module):
         x_o = x
         x_1x1 = self.conv1(x)
         x_3x3 = self.conv2(x)
-        x_5x5 = self.conv3(x)
-        x_xall = torch.cat((x_1x1, x_3x3, x_5x5), dim=1)
+        # x_5x5 = self.conv3(x)
+        # x_xall = torch.cat((x_1x1, x_3x3, x_5x5), dim=1)
+        x_xall = torch.cat((x_1x1, x_3x3), dim=1)
         x = self.conv_cat(x_xall)
         x = x + x_o
         b, c, _, _ = x.size()
