@@ -88,9 +88,20 @@ class CLFI(nn.Module):
             nn.ELU(inplace=True),
             nn.Linear(feature_size, classes_num),
         )
+        '''
         self.conv_down1 = nn.Conv2d(self.num_ftrs // 4, self.num_ftrs // 4, kernel_size = 3, stride = 2, padding = 1)
         self.conv_down2 = nn.Conv2d(self.num_ftrs // 2, self.num_ftrs // 2, kernel_size = 3, stride = 2, padding = 1)
         self.conv_down3 = nn.Conv2d(self.num_ftrs, self.num_ftrs, kernel_size = 3, stride = 2, padding = 1)
+        '''
+        self.conv_down1 = nn.Sequential(
+                            nn.Upsample(scale_factor=0.5, mode='bilinear', align_corners=True),  
+                            nn.Conv2d(self.num_ftrs // 4, self.num_ftrs // 4, kernel_size=1, stride=1))
+        self.conv_down2 = nn.Sequential(
+                            nn.Upsample(scale_factor=0.5, mode='bilinear', align_corners=True),  
+                            nn.Conv2d(self.num_ftrs // 2, self.num_ftrs // 2, kernel_size=1, stride=1))
+        self.conv_down3 = nn.Sequential(
+                            nn.Upsample(scale_factor=0.5, mode='bilinear', align_corners=True),  
+                            nn.Conv2d(self.num_ftrs, self.num_ftrs, kernel_size=1, stride=1))
         self.glinteraction = GLinteraction(self.topn)
 
     def forward(self, x, is_train=True):
@@ -202,9 +213,11 @@ class CA(nn.Module):
                                bias=False)
         self.conv2 = nn.Conv2d(in_planes, in_planes, kernel_size=3, stride=1, padding=1, dilation=1, groups=1,
                                bias=False)
+        '''
         self.conv3 = nn.Conv2d(in_planes, in_planes, kernel_size=5, stride=1, padding=2, dilation=1, groups=1,
                                bias=False)
-        self.conv_cat = nn.Conv2d(in_planes * 3, in_planes, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
+        '''
+        self.conv_cat = nn.Conv2d(in_planes * 2, in_planes, kernel_size=1, stride=1, padding=0, dilation=1, groups=1,
                                   bias=False)
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Sequential(
@@ -237,13 +250,20 @@ class Enhance_ProposalNet(nn.Module):
     def __init__(self, depth):
         super(Enhance_ProposalNet, self).__init__()
         self.feature_enhance = nn.Sequential(
+            '''
             BasicConv(depth, depth, kernel_size=1, stride=1, padding=0, relu=True),
             BasicConv(depth, depth, kernel_size=5, stride=1, padding=2, relu=True),
             BasicConv(depth, depth, kernel_size=1, stride=1, padding=0, relu=True),
             BasicConv(depth, depth * 4, kernel_size=1, stride=1, padding=0, relu=True),
             BasicConv(depth * 4, depth, kernel_size=1, stride=1, padding=0, relu=True)
+            '''
+            BasicConv(depth, depth//8, kernel_size=1, stride=1, padding=0, relu=True),
+            BasicConv(depth//8, depth//8, kernel_size=5, stride=1, padding=2, relu=True),
+            BasicConv(depth//8, depth//8, kernel_size=1, stride=1, padding=0, relu=True),
+            BasicConv(depth//8, depth //4, kernel_size=1, stride=1, padding=0, relu=True),
+            BasicConv(depth//4, depth//8, kernel_size=1, stride=1, padding=0, relu=True)
         )
-        self.down1 = nn.Conv2d(depth, 128, 3, 1, 1)
+        self.down1 = nn.Conv2d(depth//8, 128, 3, 1, 1)
         self.down2 = nn.Conv2d(128, 128, 3, 2, 1)
         self.down3 = nn.Conv2d(128, 128, 3, 2, 1)
         self.ReLU = nn.ReLU()
@@ -253,14 +273,14 @@ class Enhance_ProposalNet(nn.Module):
         # proposals: 14x14x6, 7x7x6, 4x4x9
 
     def forward(self, x):
-        batch_size = x.size(0)  # x=f3[b,14,14,2048]
+        batch_size = x.size(0)  
         x = self.feature_enhance(x)
-        d1 = self.ReLU(self.down1(x))  # d1[b,14,14,128]
-        d2 = self.ReLU(self.down2(d1))  # d2[b,7,7,128]
-        d3 = self.ReLU(self.down3(d2))  # d3[b,4,4,128]
-        t1 = self.tidy1(d1).view(batch_size, -1)  # [b,14,14,6]->[b,14*14*6]
-        t2 = self.tidy2(d2).view(batch_size, -1)  # [b,7,7,6]->[b,7*7*6]
-        t3 = self.tidy3(d3).view(batch_size, -1)  # [b,4,4,9]->[b,4*4*9]
-        return torch.cat((t1, t2, t3), dim=1)  # [b,14*14*6+7*7*6+4*4*9]
+        d1 = self.ReLU(self.down1(x))  
+        d2 = self.ReLU(self.down2(d1)) 
+        d3 = self.ReLU(self.down3(d2))  
+        t1 = self.tidy1(d1).view(batch_size, -1)  
+        t2 = self.tidy2(d2).view(batch_size, -1) 
+        t3 = self.tidy3(d3).view(batch_size, -1) 
+        return torch.cat((t1, t2, t3), dim=1)  
 
 
